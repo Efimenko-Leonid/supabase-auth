@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h2 {
+    @apply py-4 text-4xl font-black text-gray-800;
+  }
+
+  .button {
+    @apply px-8 py-2 font-bold text-green-400 bg-white border-2 border-green-400 rounded-full custom-focus hover: hover:text-white focus:bg-green-400 focus:text-white;
+  }
+
+  .button-inverse {
+    @apply px-8 py-2 font-bold text-white bg-green-400 border-2 border-white rounded-full custom-focus hover: hover:bg-white hover:text-green-400 focus:border-green-400 focus:bg-white focus:text-green-400;
+  }
+
+  .custom-focus {
+    @apply border-green-400 focus: focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2;
+  }
+
+  .heading {
+    @apply text-lg font-semibold text-gray-700;
+  }
+
+  .highlight {
+    @apply p-2 ml-1 font-mono bg-gray-100 rounded-lg;
+  }
+}
