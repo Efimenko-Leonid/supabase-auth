@@ -1,14 +1,13 @@
-import Layout from '@/components/Layout';
+import { Layout } from '@/components/Layout';
 import { useAuth } from '@/lib/auth';
 import { Auth } from '@supabase/ui';
 import { supabase } from '@/lib/client';
 
 export default function Home() {
-  const { user, signOut } = useAuth();
+  const { user, view, signOut } = useAuth();
 
   return (
     <Layout>
-      {!user && <Auth supabaseClient={supabase} />}
       {user && (
         <>
           <h2>Welcome!</h2>
@@ -21,6 +20,8 @@ export default function Home() {
           </button>
         </>
       )}
+
+      {!user && <Auth view={view} supabaseClient={supabase} />}
     </Layout>
   );
 }
