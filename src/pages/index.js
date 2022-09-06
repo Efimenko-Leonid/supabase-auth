@@ -1,4 +1,4 @@
-import { Layout } from '@/components/Layout';
+import Layout from '@/components/Layout';
 import { useAuth } from '@/lib/auth';
 import { Auth } from '@supabase/ui';
 import { supabase } from '@/lib/client';

@@ -1,23 +1,11 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState
+} from 'react';
 
 export const AuthContext = createContext();
-
-useEffect(() => {
-  const activeSession = supabase.auth.session();
-  setSession(activeSession);
-  setUser(activeSession?.user ?? null);
-
-  const { data: authListener } = supabase.auth.onAuthStateChange(
-    (event, currentSession) => {
-      setSession(currentSession);
-      setUser(currentSession?.user ?? null);
-    }
-  );
-
-  return () => {
-    authListener?.unsubscribe();
-  };
-}, []);
 
 export const AuthProvider = ({ supabase, ...props }) => {
   const [session, setSession] = useState(null);
@@ -42,6 +30,23 @@ export const AuthProvider = ({ supabase, ...props }) => {
         }
       }
     );
+  }, []);
+
+  useEffect(() => {
+    const activeSession = supabase.auth.session();
+    setSession(activeSession);
+    setUser(activeSession?.user ?? null);
+
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event, currentSession) => {
+        setSession(currentSession);
+        setUser(currentSession?.user ?? null);
+      }
+    );
+
+    return () => {
+      authListener?.unsubscribe();
+    };
   }, []);
 
   return (
