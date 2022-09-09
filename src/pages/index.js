@@ -2,17 +2,19 @@ import Layout from '@/components/Layout';
 import { useAuth } from '@/lib/auth';
 import { Auth } from '@supabase/ui';
 import { supabase } from '@/lib/client';
+import { VIEWS } from '@/lib/auth';
+
 
 export default function Home() {
   const { user, view, signOut } = useAuth();
 
-  // if (view === VIEWS.UPDATE_PASSWORD) {
-  //   return (
-  //     <Layout>
-  //       <Auth.UpdatePassword supabaseClient={supabase} />
-  //     </Layout>
-  //   );
-  // }
+  if (view === VIEWS.UPDATE_PASSWORD) {
+    return (
+      <Layout>
+        <Auth.UpdatePassword supabaseClient={supabase} />
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
